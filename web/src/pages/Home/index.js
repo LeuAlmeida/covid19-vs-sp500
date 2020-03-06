@@ -2,8 +2,6 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-export default function App() {
-  return (
-    <div />
-  );
+export default function Home() {
+  return <h1>Hello Corona</h1>;
 }
