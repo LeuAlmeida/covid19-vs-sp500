@@ -33,7 +33,7 @@ export const NavItem = styled.div`
     font-weight: bold;
     color: #333;
     margin: 0 10px;
-    transition: color 0.4s;
+    transition: color 0.2s;
     text-transform: uppercase;
 
     &:hover {
