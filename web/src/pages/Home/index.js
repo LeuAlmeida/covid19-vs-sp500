@@ -1,19 +1,33 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import api from '../../services/api';
 import { Container, Wrapper } from './styles';
 
-export default function Home() {
-  return (
-    <Container>
+
+function Home() {
+  const [mortos, setMortos] = useState({})
+
+  useEffect(() => {
+    async function loadMortos() {
+      const response = await api.get('/deaths');
+
+      setMortos(response.data);
+    }
+
+    loadMortos();
+  }, [])
+
+    console.log(mortos)
+    return (
+      <Container>
       <Wrapper>
         <h1>COVID-19 vs S&P500 Index</h1>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil culpa
-          reprehenderit et facere ducimus, sit, adipisci aspernatur non autem in
-          ipsum fugiat dolorum tempore quam commodi vitae magnam? Inventore,
-          aut!
+          {mortos.latest}
         </p>
       </Wrapper>
     </Container>
-  );
+    );
+  
 }
+
+export default Home;
