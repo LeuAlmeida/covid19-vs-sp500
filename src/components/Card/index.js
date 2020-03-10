@@ -22,7 +22,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  title: 'Título do Card',
+  title: 'Carregando',
   quantity: 0,
   loading: true,
 };
