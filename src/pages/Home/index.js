@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from 'react';
+
 import api from '../../services/api';
+
+import Card from '../../components/Card';
 import { Container, Wrapper } from './styles';
 
-
 function Home() {
-  const [mortos, setMortos] = useState({})
+  const [deaths, setDeaths] = useState({});
 
   useEffect(() => {
-    async function loadMortos() {
+    async function loadDeaths() {
       const response = await api.get('/deaths');
 
-      setMortos(response.data);
+      setDeaths(response.data);
     }
 
-    loadMortos();
-  }, [])
+    loadDeaths();
+  }, []);
 
-    console.log(mortos)
-    return (
-      <Container>
+  console.log(deaths);
+  return (
+    <Container>
+      <Card>Teste</Card>
       <Wrapper>
         <h1>COVID-19 vs S&P500 Index</h1>
-        <p>
-          {mortos.latest}
-        </p>
+        <p>{deaths.latest}</p>
       </Wrapper>
     </Container>
-    );
-  
+  );
 }
 
 export default Home;
