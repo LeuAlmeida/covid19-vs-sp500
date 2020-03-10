@@ -1,19 +1,14 @@
 import React from 'react';
 
-import { Container, IndividualCard } from './styles';
+import { IndividualCard } from './styles';
 
-export default function Card() {
+export default function Card({ title, quantity, loading }) {
   return (
-    <Container>
-      <IndividualCard>
-        <span>Teste</span>
+    <>
+      <IndividualCard title={title} loading={loading}>
+        <h3>{title}</h3>
+        <span>{quantity}</span>
       </IndividualCard>
-      <IndividualCard>
-        <span>Teste</span>
-      </IndividualCard>
-      <IndividualCard>
-        <span>Teste</span>
-      </IndividualCard>
-    </Container>
+    </>
   );
 }
