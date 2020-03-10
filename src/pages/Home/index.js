@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
 import Card from '../../components/Card';
-import { Container, CardContainer, Wrapper } from './styles';
+import MapChart from '../../components/MapChart';
+import { Container, CardContainer, MapContainer } from './styles';
 
 function Home() {
   const [deaths, setDeaths] = useState({});
@@ -11,6 +12,7 @@ function Home() {
   const [recovered, setRecovered] = useState({});
   const [all, setAll] = useState({});
   const [loading, setLoading] = useState(true);
+  const [view, setView] = useState('all');
 
   useEffect(() => {
     async function loadAll() {
@@ -43,28 +45,38 @@ function Home() {
     loadAll();
     setLoading(false);
   }, []);
-  console.log(all);
 
   return (
-    <Container>
-      <CardContainer>
-        <Card title="Mortos" quantity={deaths.latest} loading={loading} />
-        <Card
-          title="Confirmados"
-          quantity={confirmed.latest}
-          loading={loading}
-        />
-        <Card
-          title="Recuperados"
-          quantity={recovered.latest}
-          loading={loading}
-        />
-      </CardContainer>
-      <Wrapper>
+    <>
+      <Container>
+        <CardContainer>
+          <Card
+            onClick={() => setView('deaths')}
+            title="Deaths"
+            quantity={deaths.latest}
+            loading={loading}
+          />
+          <Card
+            onClick={() => setView('confirmed')}
+            title="Confirmed"
+            quantity={confirmed.latest}
+            loading={loading}
+          />
+          <Card
+            onClick={() => setView('recovered')}
+            title="Recovered"
+            quantity={recovered.latest}
+            loading={loading}
+          />
+        </CardContainer>
+        {/* <Wrapper>
         <h1>COVID-19 vs S&P500 Index</h1>
-        <p>{deaths.latest}</p>
-      </Wrapper>
-    </Container>
+      </Wrapper> */}
+      </Container>
+      <MapContainer>
+        <MapChart />
+      </MapContainer>
+    </>
   );
 }
 
