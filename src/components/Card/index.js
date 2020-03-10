@@ -1,7 +1,19 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Container, IndividualCard } from './styles';
 
 export default function Card() {
-  return <div />;
+  return (
+    <Container>
+      <IndividualCard>
+        <span>Teste</span>
+      </IndividualCard>
+      <IndividualCard>
+        <span>Teste</span>
+      </IndividualCard>
+      <IndividualCard>
+        <span>Teste</span>
+      </IndividualCard>
+    </Container>
+  );
 }
