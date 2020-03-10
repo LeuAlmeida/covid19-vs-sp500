@@ -12,13 +12,19 @@ export const Container = styled.div`
 
 export const CardContainer = styled.div`
   display: flex;
+  cursor: pointer;
   flex-direction: row;
   width: 100%;
+  height: auto;
   align-items: center;
   justify-content: center;
   max-width: 900px;
   margin-bottom: 20px;
   margin-top: 20px;
+`;
+
+export const MapContainer = styled.section`
+  width: 100%;
 `;
 
 export const Wrapper = styled.div`
@@ -29,13 +35,15 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fff;
+  /* background: #fff; */
   padding: 20px;
   border-radius: 5px;
+  margin-bottom: 30px;
 
   h1 {
-    color: #b31217;
-    margin-bottom: 20px;
+    color: #fff;
+    /* color: #b31217; */
+    margin: 0 20px;
   }
 
   p {
