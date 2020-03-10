@@ -9,6 +9,7 @@ function Home() {
   const [deaths, setDeaths] = useState({});
   const [confirmed, setConfirmed] = useState({});
   const [recovered, setRecovered] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadDeaths() {
@@ -32,16 +33,23 @@ function Home() {
     loadDeaths();
     loadRecovered();
     loadCases();
+    setLoading(false);
   }, []);
-
-  console.log(deaths);
 
   return (
     <Container>
       <CardContainer>
-        <Card title="Mortos" quantity={deaths.latest} />
-        <Card title="Confirmados" quantity={confirmed.latest} />
-        <Card title="Recuperados" quantity={recovered.latest} />
+        <Card title="Mortos" quantity={deaths.latest} loading={loading} />
+        <Card
+          title="Confirmados"
+          quantity={confirmed.latest}
+          loading={loading}
+        />
+        <Card
+          title="Recuperados"
+          quantity={recovered.latest}
+          loading={loading}
+        />
       </CardContainer>
       <Wrapper>
         <h1>COVID-19 vs S&P500 Index</h1>
