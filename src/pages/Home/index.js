@@ -4,23 +4,16 @@ import api from '../../services/api';
 
 import Card from '../../components/Card';
 import MapChart from '../../components/MapChart';
-import { Container, CardContainer, MapContainer } from './styles';
+import { Container, CardContainer, Wrapper, MapContainer } from './styles';
 
 function Home() {
   const [deaths, setDeaths] = useState({});
   const [confirmed, setConfirmed] = useState({});
   const [recovered, setRecovered] = useState({});
-  const [all, setAll] = useState({});
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState('all');
+  const [view, setView] = useState('confirmed');
 
   useEffect(() => {
-    async function loadAll() {
-      const response = await api.get('/all');
-
-      setAll(response.data);
-    }
-
     async function loadDeaths() {
       const response = await api.get('/deaths');
 
@@ -42,7 +35,6 @@ function Home() {
     loadDeaths();
     loadRecovered();
     loadCases();
-    loadAll();
     setLoading(false);
   }, []);
 
@@ -69,12 +61,21 @@ function Home() {
             loading={loading}
           />
         </CardContainer>
-        {/* <Wrapper>
-        <h1>COVID-19 vs S&P500 Index</h1>
-      </Wrapper> */}
+        <Wrapper>
+          {loading ? (
+            <h1>...</h1>
+          ) : (
+            <h1>
+              {view.toUpperCase()} CASES (
+              {view === 'deaths' && <span>{deaths.latest}</span>}
+              {view === 'confirmed' && <span>{confirmed.latest}</span>}
+              {view === 'recovered' && <span>{recovered.latest}</span>})
+            </h1>
+          )}
+        </Wrapper>
       </Container>
       <MapContainer>
-        <MapChart />
+        <MapChart view={view} />
       </MapContainer>
     </>
   );
