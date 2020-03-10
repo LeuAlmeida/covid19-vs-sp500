@@ -13,9 +13,11 @@ const rotate = keyframes`
   }
 `;
 
-export const IndividualCard = styled.div`
+export const IndividualCard = styled.button`
   display: flex;
+  z-index: 999999;
   cursor: pointer;
+  border: 0;
   flex-direction: column;
   width: 295px;
   padding: 10px 0;
@@ -26,6 +28,8 @@ export const IndividualCard = styled.div`
     align-self: center;
     justify-self: center;
     font-size: 30px;
+    cursor: pointer;
+    color: #FFF;
   }
 
   h3 {
@@ -39,7 +43,7 @@ export const IndividualCard = styled.div`
   }
 
   ${props =>
-    props.title === 'Mortos' &&
+    props.title === 'Deaths' &&
     css`
       background-image: url(${death});
       -webkit-background-size: cover;
@@ -54,7 +58,7 @@ export const IndividualCard = styled.div`
     `}
 
   ${props =>
-    props.title === 'Confirmados' &&
+    props.title === 'Confirmed' &&
     css`
       background-image: url(${confirmed});
       -webkit-background-size: cover;
@@ -70,7 +74,7 @@ export const IndividualCard = styled.div`
     `}
 
   ${props =>
-    props.title === 'Recuperados' &&
+    props.title === 'Recovered' &&
     css`
       background-image: url(${recovered});
       -webkit-background-size: cover;
@@ -89,7 +93,7 @@ export const IndividualCard = styled.div`
   align-items: center;
   justify-content: center;
 
-  & + div {
+  & + button {
     margin-left: 10px;
   }
 `;
