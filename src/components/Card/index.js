@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { IndividualCard } from './styles';
 
@@ -12,3 +13,15 @@ export default function Card({ title, quantity, loading }) {
     </>
   );
 }
+
+Card.propTypes = {
+  title: PropTypes.string,
+  quantity: PropTypes.string,
+  loading: PropTypes.bool,
+};
+
+Card.defaultProps = {
+  title: 'Título do Card',
+  quantity: 0,
+  loading: true,
+};
