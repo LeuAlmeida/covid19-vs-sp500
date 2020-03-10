@@ -30,8 +30,6 @@ function MapChart({ view }) {
         toast.error('Internal server error.');
       }
 
-      console.log(content);
-
       const locations = content
         .filter(item => (item.latest < 1 ? null : item))
         .map(loc => ({
@@ -72,7 +70,6 @@ function MapChart({ view }) {
           </text>
         </Marked>
       ))}
-      {console.log(data)}
     </ComposableMap>
   );
 }
