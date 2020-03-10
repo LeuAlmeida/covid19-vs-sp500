@@ -35,14 +35,13 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background: #fff; */
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 30px;
 
   h1 {
-    color: #fff;
-    /* color: #b31217; */
+    color: #b31217;
+    text-transform: capitalize;
     margin: 0 20px;
   }
 
