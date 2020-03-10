@@ -9,9 +9,16 @@ function Home() {
   const [deaths, setDeaths] = useState({});
   const [confirmed, setConfirmed] = useState({});
   const [recovered, setRecovered] = useState({});
+  const [all, setAll] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    async function loadAll() {
+      const response = await api.get('/all');
+
+      setAll(response.data);
+    }
+
     async function loadDeaths() {
       const response = await api.get('/deaths');
 
@@ -33,6 +40,7 @@ function Home() {
     loadDeaths();
     loadRecovered();
     loadCases();
+    loadAll();
     setLoading(false);
   }, []);
 
