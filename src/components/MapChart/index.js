@@ -30,12 +30,16 @@ function MapChart({ view }) {
         toast.error('Internal server error.');
       }
 
-      const locations = content.map(loc => ({
-        markerOffset: -10,
-        name: loc.country,
-        coordinates: [loc.coordinates.long, loc.coordinates.lat],
-        cases: loc.latest,
-      }));
+      console.log(content);
+
+      const locations = content
+        .filter(item => (item.latest < 1 ? null : item))
+        .map(loc => ({
+          markerOffset: -10,
+          name: loc.country,
+          coordinates: [loc.coordinates.long, loc.coordinates.lat],
+          cases: loc.latest,
+        }));
 
       setData(locations);
     }
@@ -68,6 +72,7 @@ function MapChart({ view }) {
           </text>
         </Marked>
       ))}
+      {console.log(data)}
     </ComposableMap>
   );
 }
