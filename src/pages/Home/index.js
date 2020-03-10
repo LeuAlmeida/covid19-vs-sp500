@@ -43,6 +43,7 @@ function Home() {
     loadAll();
     setLoading(false);
   }, []);
+  console.log(all);
 
   return (
     <Container>
