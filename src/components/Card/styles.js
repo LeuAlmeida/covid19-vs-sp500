@@ -34,13 +34,9 @@ export const IndividualCard = styled.div`
     text-transform: uppercase;
   }
 
-  ${props =>
-    props.loading &&
-    css`
-      svg {
-        animation: ${rotate} 2s linear infinite;
-      }
-    `}
+  svg {
+    animation: ${rotate} 2s linear infinite;
+  }
 
   ${props =>
     props.title === 'Mortos' &&
@@ -53,10 +49,6 @@ export const IndividualCard = styled.div`
       background-position-y: center;
 
       h3 {
-        color: #fff;
-      }
-
-      span {
         color: #fff;
       }
     `}
@@ -75,10 +67,6 @@ export const IndividualCard = styled.div`
         color: #fff;
         margin-bottom: 5px;
       }
-
-      span {
-        color: #cdcdcd;
-      }
     `}
 
   ${props =>
@@ -94,10 +82,6 @@ export const IndividualCard = styled.div`
       h3 {
         color: #fff;
         margin-bottom: 5px;
-      }
-
-      span {
-        color: #cdcdcd;
       }
     `}
 
