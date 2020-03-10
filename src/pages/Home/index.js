@@ -15,27 +15,32 @@ function Home() {
 
   useEffect(() => {
     async function loadDeaths() {
+      setLoading(true);
       const response = await api.get('/deaths');
 
       setDeaths(response.data);
+      setLoading(false);
     }
 
     async function loadCases() {
+      setLoading(true);
       const response = await api.get('/confirmed');
 
       setConfirmed(response.data);
+      setLoading(false);
     }
 
     async function loadRecovered() {
+      setLoading(true);
       const response = await api.get('/recovered');
 
       setRecovered(response.data);
+      setLoading(false);
     }
 
     loadDeaths();
     loadRecovered();
     loadCases();
-    setLoading(false);
   }, []);
 
   return (
@@ -63,10 +68,10 @@ function Home() {
         </CardContainer>
         <Wrapper>
           {loading ? (
-            <h1>...</h1>
+            <h1>Loading...</h1>
           ) : (
             <h1>
-              {view.toUpperCase()} CASES (
+              {view} cases around the world (
               {view === 'deaths' && <span>{deaths.latest}</span>}
               {view === 'confirmed' && <span>{confirmed.latest}</span>}
               {view === 'recovered' && <span>{recovered.latest}</span>})
