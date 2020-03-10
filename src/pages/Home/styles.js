@@ -2,14 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  max-width: 900px;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 900px;
   justify-content: center;
   margin: 0 auto;
-  margin-top: 20px;
 `;
 
 export const Wrapper = styled.div`
+  width: 100%;
+  max-width: 900px;
   flex: 1;
   display: flex;
   flex-direction: column;
