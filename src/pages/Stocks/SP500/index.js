@@ -1,7 +1,13 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Container } from './styles';
+
+import Charts from '../../../components/Charts';
 
 export default function SP500() {
-  return <h1>S&P 500</h1>;
+  return (
+    <Container>
+      <Charts />
+    </Container>
+  );
 }
