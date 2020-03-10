@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import PropTypes from 'prop-types';
 
 import api, { geoUrl } from '../../services/api';
 
 import { Marked } from './styles';
 
-function MapChart() {
+function MapChart({ view }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     async function loadCases() {
       const response = await api.get('/all');
 
-      const content = response.data.confirmed.locations;
+      let content;
+
+      if (view === 'deaths') {
+        content = response.data.deaths.locations;
+      } else if (view === 'confirmed') {
+        content = response.data.confirmed.locations;
+      } else if (view === 'recovered') {
+        content = response.data.recovered.locations;
+      } else {
+        content = response.data.confirmed.locations;
+      }
 
       const locations = content.map(loc => ({
         markerOffset: -10,
@@ -25,7 +36,7 @@ function MapChart() {
     }
 
     loadCases();
-  }, []);
+  }, [view]);
 
   return (
     <ComposableMap style={{ margin: '-70 0' }}>
@@ -55,5 +66,13 @@ function MapChart() {
     </ComposableMap>
   );
 }
+
+MapChart.propTypes = {
+  view: PropTypes.string,
+};
+
+MapChart.defaultProps = {
+  view: 'confirmed',
+};
 
 export default MapChart;
