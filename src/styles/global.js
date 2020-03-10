@@ -18,10 +18,8 @@ export default createGlobalStyle`
     height: 100%;
   }
   body {
-    background: linear-gradient(to right, #b31217, #e52d27);
-    -webkit-font-smoothing: antialiased !important;
-    -webkit-font-smoothing: antialiased;
-    color: #FFF;
+    background: #f5f5f5;
+    color: #333;
   }
   body, input, button {
     font: 14px 'Roboto', sans-serif;
