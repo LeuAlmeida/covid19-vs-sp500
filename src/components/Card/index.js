@@ -7,7 +7,7 @@ import { IndividualCard } from './styles';
 export default function Card({ title, quantity, loading }) {
   return (
     <>
-      <IndividualCard title={title} loading={loading}>
+      <IndividualCard title={title} loading={loading.toString()}>
         <h3>{title}</h3>
         <span>{quantity || <FaSpinner size={28} color="#FFF" />}</span>
       </IndividualCard>
@@ -17,7 +17,7 @@ export default function Card({ title, quantity, loading }) {
 
 Card.propTypes = {
   title: PropTypes.string,
-  quantity: PropTypes.string,
+  quantity: PropTypes.number,
   loading: PropTypes.bool,
 };
 
