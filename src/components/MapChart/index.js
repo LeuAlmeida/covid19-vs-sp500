@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 import api, { geoUrl } from '../../services/api';
 
@@ -15,14 +16,18 @@ function MapChart({ view }) {
 
       let content;
 
-      if (view === 'deaths') {
-        content = response.data.deaths.locations;
-      } else if (view === 'confirmed') {
-        content = response.data.confirmed.locations;
-      } else if (view === 'recovered') {
-        content = response.data.recovered.locations;
-      } else {
-        content = response.data.confirmed.locations;
+      try {
+        if (view === 'deaths') {
+          content = response.data.deaths.locations;
+        } else if (view === 'confirmed') {
+          content = response.data.confirmed.locations;
+        } else if (view === 'recovered') {
+          content = response.data.recovered.locations;
+        } else {
+          content = response.data.confirmed.locations;
+        }
+      } catch (err) {
+        toast.error('Internal server error.');
       }
 
       const locations = content.map(loc => ({
