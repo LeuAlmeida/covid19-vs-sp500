@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaSpinner } from 'react-icons/fa';
 
 import { IndividualCard } from './styles';
 
@@ -8,7 +9,7 @@ export default function Card({ title, quantity, loading }) {
     <>
       <IndividualCard title={title} loading={loading}>
         <h3>{title}</h3>
-        <span>{quantity}</span>
+        <span>{quantity || <FaSpinner size={28} color="#FFF" />}</span>
       </IndividualCard>
     </>
   );
