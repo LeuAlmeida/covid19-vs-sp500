@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 
 import { Container } from './styles';
@@ -7,8 +7,12 @@ function Charts({
   coronaData = [65, 59, 80, 81, 56, 55, 40],
   sp500Data = [65, 59, 12, 22, 95, 40, 55],
 }) {
+  const [corona, setCorona] = useState([]);
+
+  // console.log(coronaData[0], coronaData[1], coronaData[2]);
+
   const lineData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: ['January', 'February', 'March'],
     datasets: [
       {
         label: 'Coronavirus cases',
@@ -29,7 +33,7 @@ function Charts({
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: coronaData,
+        data: [coronaData[0], coronaData[1], coronaData[2]],
       },
       {
         label: 'S&P 500 Index',
@@ -55,10 +59,19 @@ function Charts({
     ],
   };
 
+  if (coronaData) {
+    return (
+      <Container>
+        <h4>COVID-19 vs S&P500</h4>
+        <Line height="100" data={lineData} />
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <h4>COVID-19 vs S&P500</h4>
-      <Line height="100" data={lineData} />
+      Carregando...
     </Container>
   );
 }
